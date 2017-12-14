@@ -39,6 +39,7 @@ namespace efcore_postgresql_web_api.Controllers
         [HttpPost]
         public void Post([FromBody]Blog blog)
         {
+            Repository.Add(blog);
         }
 
         // PUT api/values/5
