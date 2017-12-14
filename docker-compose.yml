@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  efcore-postgresql-web-api:
+    image: efcore-postgresql-web-api
+    ports:
+      - 8081:80
+    build:
+      context: ./efcore-postgresql-web-api
+      dockerfile: Dockerfile
+    environment:
+      BLOG_DB_CONNECTION_STRING: "Host=postgres;Database=BlogDb;Username=root;Password=root"
+  
+  postgres:
+    image: postgres
+    ports:
+      - 5432:5432
+    restart: always
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: BlogDb

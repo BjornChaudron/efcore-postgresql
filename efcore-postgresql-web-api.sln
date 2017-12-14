@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2006
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "efcore-postgresql-web-api", "efcore-postgresql-web-api\efcore-postgresql-web-api.csproj", "{668DF0FE-814A-4B17-992B-98D7B2385F59}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{5E54CD1C-77F5-499D-B6D0-A3F3FE0ED818}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{668DF0FE-814A-4B17-992B-98D7B2385F59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{668DF0FE-814A-4B17-992B-98D7B2385F59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{668DF0FE-814A-4B17-992B-98D7B2385F59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{668DF0FE-814A-4B17-992B-98D7B2385F59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E54CD1C-77F5-499D-B6D0-A3F3FE0ED818}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E54CD1C-77F5-499D-B6D0-A3F3FE0ED818}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E54CD1C-77F5-499D-B6D0-A3F3FE0ED818}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E54CD1C-77F5-499D-B6D0-A3F3FE0ED818}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3A2E057E-3FDB-4917-A48B-B68A37526668}
+	EndGlobalSection
+EndGlobal
