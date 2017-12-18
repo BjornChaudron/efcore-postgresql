@@ -19,18 +19,14 @@ namespace efcore_postgresql_web_api.Repositories
 
         public void Add(Blog entity)
         {
-
             Context.Blogs.Add(entity);
             Context.SaveChanges();
-           
         }
 
         public List<Blog> GetAll()
         {
-            var test = Context.Blogs;
             var result = Context.Blogs.ToList();
             return result;
-
         }
     }
 }
