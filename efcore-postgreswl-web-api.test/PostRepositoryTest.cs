@@ -7,13 +7,13 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace efcore_postgreswl_web_api.test
 {
     [TestClass]
-    public class BlogRepositoryTest
+    public class PostRepositoryTest
     {
         private Scenario scenario;
         
         private class Scenario
         {
-            public BlogRepository BlogRepository { get; }
+            public PostRepository PostRepository { get; }
             public BlogContext Context { get; }
             private DbContextOptions Options { get; } =
                 new DbContextOptionsBuilder()
@@ -23,7 +23,7 @@ namespace efcore_postgreswl_web_api.test
             public Scenario()
             {
                 Context = new BlogContext(Options);
-                BlogRepository = new BlogRepository(Context);
+                PostRepository = new PostRepository(Context);
                 EmptyDatabase();
             }
 
@@ -42,32 +42,37 @@ namespace efcore_postgreswl_web_api.test
         }
 
         [TestMethod]
-        public void Add_BlogUrlTest_BlogUrlTest()
+        public void Add_PostTitlePost1_PostTitlePost1()
         {
-            var url = "test";
+            var url = "Bestaande blog";
             var blog = new Blog() {Url = url};
             
 
-            scenario.BlogRepository.Add(blog);
-            var testResult = scenario.Context.Blogs.FirstOrDefault();
+            var blogEntityEntry = scenario.Context.Blogs.Add(blog);
+            var post = new Post() { BlogId = blogEntityEntry.Entity.BlogId,Content = "test post", Title = "Post1"};
+
+            scenario.PostRepository.Add(post);
+
+            var testResult = scenario.Context.Posts.FirstOrDefault();
             
-            Assert.AreEqual(url, testResult.Url);
+            Assert.AreEqual(post.Title, testResult.Title);
         }
 
         [TestMethod]
-        public void GetAll_ExistTwoBlogs_ExpectTwoBlogs()
+        public void Add_PostTitlePost1AddToBestaandeBlog_PostTitlePost1WithBestaandeBlog()
         {
-            var url = "test1";
-            var blog1 = new Blog() { Url = url };
-            scenario.Context.Blogs.Add(blog1);
-            var url2 = "test2";
-            var blog2 = new Blog() { Url = url2 };
-            scenario.Context.Blogs.Add(blog2);
-            scenario.Context.SaveChanges();
+            var url = "Bestaande blog";
+            var blog = new Blog() { Url = url };
 
-            var testResult = scenario.BlogRepository.GetAll();
 
-            Assert.AreEqual(2, testResult.Count);
+            var blogEntityEntry = scenario.Context.Blogs.Add(blog);
+            var post = new Post() { BlogId = blogEntityEntry.Entity.BlogId, Content = "test post", Title = "Post1" };
+
+            scenario.PostRepository.Add(post);
+
+            var testResult = scenario.Context.Posts.FirstOrDefault();
+
+            Assert.AreEqual(blog.Url, testResult.Blog.Url);
         }
 
 

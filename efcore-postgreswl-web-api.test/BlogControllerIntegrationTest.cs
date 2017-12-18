@@ -76,5 +76,24 @@ namespace efcore_postgreswl_web_api.test
 
             Assert.AreEqual(2, result.Count);
         }
+
+        [TestMethod]
+        public void GetAll_ExistBlogWith2Posts_ExpectBlogWith2Posts()
+        {
+            var url = "Bestaande blog";
+            var blog = new Blog() { Url = url };
+            var blogEntityEntry = scenario.Context.Blogs.Add(blog);
+            var post1 = new Post() { BlogId = blogEntityEntry.Entity.BlogId, Content = "test post", Title = "Post1" };
+            var post2 = new Post() { BlogId = blogEntityEntry.Entity.BlogId, Content = "bla bla", Title = "Post2" };
+            scenario.Context.Posts.Add(post1);
+            scenario.Context.Posts.Add(post2);
+            scenario.Context.SaveChanges();
+
+            var actionResult = scenario.Sut.GetAll();
+            var okObject = actionResult as OkObjectResult;
+            var result = (List<Blog>)okObject.Value;
+
+            Assert.AreEqual(2, result[0].Posts.Count);
+        }
     }
 }

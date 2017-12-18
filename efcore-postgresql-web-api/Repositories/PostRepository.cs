@@ -25,7 +25,7 @@ namespace efcore_postgresql_web_api.Repositories
 
         public List<Post> GetAll()
         {
-            throw new NotImplementedException();
+           return Context.Posts.Include(p => p.Blog).ToList();
         }
     }
 }
