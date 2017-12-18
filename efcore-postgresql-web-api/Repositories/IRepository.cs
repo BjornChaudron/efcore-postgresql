@@ -8,5 +8,6 @@ namespace efcore_postgresql_web_api.Repositories
     public interface IRepository<T>
     {
         void Add(T entity);
+        List<T> GetAll();
     }
 }

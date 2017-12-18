@@ -10,20 +10,22 @@ namespace efcore_postgresql_web_api.Repositories
 {
     public class PostRepository : IRepository<Post>
     {
-        private DbContextOptions Options { get; }
+        private BlogContext Context { get; }
 
-        public PostRepository(DbContextOptions options)
+        public PostRepository(BlogContext context)
         {
-            Options = options;
+            Context = context;
         }
 
         public void Add(Post entity)
         {
-            using (var db = new BlogContext(Options))
-            {
-                db.Posts.Add(entity);
-                db.SaveChanges();
-            }
+                Context.Posts.Add(entity);
+                Context.SaveChanges();
+        }
+
+        public List<Post> GetAll()
+        {
+            throw new NotImplementedException();
         }
     }
 }

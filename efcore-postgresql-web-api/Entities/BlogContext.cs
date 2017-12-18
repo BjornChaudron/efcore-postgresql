@@ -17,6 +17,9 @@ namespace efcore_postgresql_web_api.Entities
         {
             modelBuilder.ApplyConfiguration(new BlogConfiguration());
             modelBuilder.ApplyConfiguration(new PostConfiguration());
+            modelBuilder.Entity<Blog>()
+                .Property(b => b.BlogId)
+                .ValueGeneratedOnAdd();
             base.OnModelCreating(modelBuilder);
         }
     }
