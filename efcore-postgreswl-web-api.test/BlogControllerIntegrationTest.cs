@@ -21,7 +21,7 @@ namespace efcore_postgreswl_web_api.test
             public BlogsController Sut { get;}
             private DbContextOptions Options { get; } =
                 new DbContextOptionsBuilder()
-                    .UseNpgsql("Server = 127.0.0.1;Port=5432;Database=BlogDb;User Id=root;Password=root")
+                    .UseNpgsql("Server = 127.0.0.1;Port=2000;Database=BlogDb;User Id=root;Password=root")
                     .Options;
 
             public Scenario()

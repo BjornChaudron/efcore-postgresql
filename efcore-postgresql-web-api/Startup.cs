@@ -39,7 +39,7 @@ namespace efcore_postgresql_web_api
             services.AddMvc();
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, BlogContext context )
         {
             if (env.IsDevelopment())
             {
@@ -51,10 +51,7 @@ namespace efcore_postgresql_web_api
 
                 try
                 {
-                    using (var context = app.ApplicationServices.GetService<BlogContext>())
-                    {
-                        context.Database.Migrate();
-                    }
+                    context.Database.Migrate();
                 }
                 catch (SqlException sqle)
                 {
